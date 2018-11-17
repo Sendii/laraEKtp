@@ -29,10 +29,20 @@
 				</thead>
 				<tbody>
 					@foreach($wargas as $warga)
+					<?php 
+					$a = strtolower($warga->Provinsi->name);
+					$b = strtolower($warga->Kecamatan->name);
+					$c = strtolower($warga->Kota->name);
+					$provinsi = ucwords($a);
+					$kecamatan = ucwords($b);
+					$kota = ucwords($c);
+					$subject = $kota;
+					$kotas =  str_replace("Kota ","", $subject); 
+					?>
 					<tr>
 						<td>{{ $warga->nik }}</td>
 						<td>{{ $warga->nama }}</td>
-						<td>{{ $warga->tempat }}/{{$warga->tgl_lahir}}</td>
+						<td>{{ str_limit($kotas, 19) }}<br>{{$warga->tgl_lahir}}</td>
 						<td>{{ $warga->jenkel }}</td>
 						<td>{{ $warga->gol_dar }}</td>
 						<td>{{ $warga->alamatjalan }}</td>
@@ -41,15 +51,9 @@
 							Kec. <br> 
 							RT/RW<br>
 						</td>
-						<?php 
-							$a = strtolower($warga->Provinsi->name);
-							$b = strtolower($warga->Kecamatan->name);
-							$provinsi = ucwords($a);
-							$kecamatan = ucwords($b)
-						?>
 						<td>
 							{{ str_limit($provinsi, 7) }} <br>
-							{{ str_limit($kecamatan, 8) }} <br>
+							{{ str_limit($kecamatan, 7) }} <br>
 							{{ $warga->alamatrt.'/'.$warga->alamatrw }} <br>
 						</td>
 						<td>{{ $warga->agama }}</td>
@@ -70,8 +74,8 @@
 					</tr>
 					@endforeach
 				</tbody>
-				@endsection
 			</table>
 		</div>
 	</div>
 </div>
+@endsection

@@ -18,3 +18,4 @@ Route::resource('warga', 'WargaC');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/signatures', 'WargaC@signature');

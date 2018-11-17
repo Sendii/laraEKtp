@@ -23,6 +23,12 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        DB::table('users')->insert([
+            'name' => "Sendi Dian Hadiwijaya",
+            'email' => "sendi@sendi.com",
+            'akses' => "admin",
+            'password' => bcrypt('111111')
+        ]);
     }
 
     /**

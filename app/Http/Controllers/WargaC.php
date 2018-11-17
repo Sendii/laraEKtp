@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Image;
 
 class WargaC extends Controller
 {
@@ -59,8 +60,20 @@ class WargaC extends Controller
         $new->pekerjaan = $request->input('pekerjaan');
         $new->kewarganegaraan = "Indonesia";
         $new->berlakuhingga = "Seumur Hidup";
-        $new->foto_warga = $request->input('foto_warga');
-        $new->foto_ttd = $request->input('foto_ttd');
+
+        if ($request->hasFile('foto_ttd')) {
+            $imagettd = $request->file('foto_ttd');
+            $filename = time() . '.' . $imagettd->getClientOriginalExtension();
+            Image::make($imagettd)->save( public_path('/signature/images/'. $filename ) );
+            $new->foto_ttd = $filename;
+        }
+
+        if ($request->hasFile('foto_warga')) {
+            $imagefoto = $request->file('foto_warga');
+            $filenames = time() . '.' . $imagefoto->getClientOriginalExtension();
+            Image::make($imagefoto)->save( public_path('/wargas/'. $filenames ) );
+            $new->foto_warga = $filenames;
+        }
 
         $new->save();
         return redirect('warga');
@@ -85,6 +98,10 @@ class WargaC extends Controller
      */
     public function edit($id)
     {
+        $warga['provinces'] = \App\Model\Province::orderBy('name', 'desc')->get();
+        $warga['kotas'] = \App\Model\Regency::orderBy('name', 'desc')->get();
+        $warga['kelurahans'] = \App\Model\District::orderBy('name', 'desc')->get();
+        $warga['kecamatans'] = \App\Model\District::orderBy('name', 'desc')->get();
         $warga['wargas'] = \App\Warga::find($id);
         
         return view('warga.edit', $warga);
@@ -136,5 +153,9 @@ class WargaC extends Controller
 
         $delete->delete();
         return back();
+    }
+
+    public function signature() {
+        return view('warga.signature');
     }
 }

@@ -4,10 +4,10 @@
 @section('content')
 <div class="col-lg-12">
 	<div class="panel panel-default">
-		<div class="panel-heading">sa</div>
+		<div class="panel-heading"></div>
 	</div>
 	<div class="panel-body">
-		<form method="POST" action="{{url('warga')}}">
+		<form method="POST" action="{{url('warga')}}" enctype="multipart/form-data">
 			@csrf
 			<div class="form-group">
 				<label class="col-sm-1 control-label">Nama Lengkap</label>
@@ -72,7 +72,11 @@
 						<div class="input-group-addon">
 							<i class="fa fa-deviantart"></i>
 						</div>
-						<input placeholder="Status" type="text" class="form-control"  name="status">
+						<select name="status" class="form-control select2" style="width:100%;" tabindex="-1" aria-hidden="true" required>
+							<option value="">Status</option>
+							<option value="Menikah">Menikah</option>
+							<option value="Belum Menikah">Jomnloo yaa?! :v</option>
+						</select>
 					</div>
 				</div>
 			</div>
@@ -85,10 +89,10 @@
 							<i class="fa fa-calendar"></i>
 						</div>
 						<select name="jenkel" class="form-control select2" style="width:100%;" tabindex="-1" aria-hidden="true" required>
-								<option value="">Jenis Kelamin</option>
-								<option value="P">Perempuan</option>
-								<option value="L">Laki-Laki</option>
-							</select>
+							<option value="">Jenis Kelamin</option>
+							<option value="P">Perempuan</option>
+							<option value="L">Laki-Laki</option>
+						</select>
 					</div>
 				</div>
 				<label class="col-sm-1 control-label">Golongan Darah</label>
@@ -215,6 +219,7 @@
 					</div>
 				</div>
 			</div>
+			<a href="{{url('signatures')}}" target="_blank">Click here to create your signature.</a>
 			<br><br><br><br>
 			<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus-square"></i> Tambah Data</button>
 		</form>
