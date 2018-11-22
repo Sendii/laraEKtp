@@ -40,7 +40,7 @@
 					$kotas =  str_replace("Kota ","", $subject); 
 					?>
 					<tr>
-						<td>{{ $warga->nik }}</td>
+						<td><a href="{{route('warga.showData', $warga->nik)}}">{{ $warga->nik }}</a></td>
 						<td>{{ $warga->nama }}</td>
 						<td>{{ str_limit($kotas, 19) }}<br>{{$warga->tgl_lahir}}</td>
 						<td>{{ $warga->jenkel }}</td>
@@ -61,8 +61,8 @@
 						<td>{{ $warga->pekerjaan }}</td>
 						<td>{{ $warga->kewarganegaraan }}</td>
 						<td>{{ $warga->berlakuhingga }}</td>
-						<td>{{ $warga->foto_warga }}</td>
-						<td>{{ $warga->foto_ttd }}</td>
+						<td><img src="{{asset('warga_image/'.$warga->foto_warga)}}" alt="..." class="img-responsive"></td>
+						<td><img src="{{asset('/signature/images/'.$warga->foto_ttd)}}" alt="..." class="img-responsive"></td>
 						<td>
 							<a class="btn btn-info" href="{{url('warga/'.$warga->id.'/edit')}}">edit</a>
 							<form action="{{ route('warga.destroy', $warga->id) }}" method="post">

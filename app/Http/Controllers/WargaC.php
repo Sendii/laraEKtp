@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Image;
+use PDF;
 
 class WargaC extends Controller
 {
@@ -71,7 +72,7 @@ class WargaC extends Controller
         if ($request->hasFile('foto_warga')) {
             $imagefoto = $request->file('foto_warga');
             $filenames = time() . '.' . $imagefoto->getClientOriginalExtension();
-            Image::make($imagefoto)->save( public_path('/wargas/'. $filenames ) );
+            Image::make($imagefoto)->save( public_path('/warga_image/'. $filenames ) );
             $new->foto_warga = $filenames;
         }
 
@@ -158,4 +159,15 @@ class WargaC extends Controller
     public function signature() {
         return view('warga.signature');
     }
+
+    public function showWarga($nik){
+        $warga['wargas'] = \App\Warga::where('nik', $nik)->first();
+        if (isset($warga['wargas'])) {
+            $nama = \App\Warga::where('nik', $nik)->value('nama');
+            $pdf = PDF::loadView('warga.cetakktp', $warga);
+            return $pdf->download($nama.'.pdf');
+        }elseif (!isset($warga['wargas']) && filter_var($warga['wargas'], FILTER_VALIDATE_INT) === false) {
+            return "data tidak ditemukan";
+        }
+    } 
 }
