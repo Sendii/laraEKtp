@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         AzisHapidin\IndoRegion\IndoRegionServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        AzisHapidin\IndoRegion\IndoRegionServiceProvider::class,
 
 
 

@@ -1,23 +1,20 @@
-@extends('layouts.app')
-
+@extends('templatesv.nav')
+@section('titles')<center>Welcome <i>{{ucwords(Auth::user()->akses)}}</i></center>
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <center>E-KTP</center>
     </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                Selamat Datang di Website KTP!
+            </div>
+            <!-- /.col-lg-6 (nested) -->
+        </div>
+        <!-- /.row (nested) -->
+    </div>
+    <!-- /.panel-body -->
 </div>
 @endsection

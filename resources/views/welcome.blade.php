@@ -79,16 +79,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    E-Ktp
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{url('warga')}}">News</a>
+                    <a href="{{url('chart')}}">Warga</a>
+                    <a href="https://github.com/Sendii/laraEktp">GitHub</a>
                 </div>
             </div>
         </div>

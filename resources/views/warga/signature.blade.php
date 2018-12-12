@@ -17,7 +17,7 @@
 <![endif]-->
 </head>
 <body onselectstart="return false">
-	<a id="github" style="position: absolute; top: 0; right: 0; border: 0" href="https://github.com/Sendii" target="_blank">
+	<a id="github" style="position: absolute; top: 0; right: 0; border: 0" href="https://github.com/Sendii/laraEKtp" target="_blank">
 		<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
 	</a>
 
@@ -26,7 +26,8 @@
 			<canvas></canvas>
 		</div>
 		<div class="signature-pad--footer">
-			<div class="description">Sign above</div>
+		<img src="https://shihchun.github.io/images/shihchun.jpg" style="width: 50px;" width="50px;">
+			<div class="description">Signature!</div>
 
 			<div class="signature-pad--actions">
 				<div>

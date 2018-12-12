@@ -2,11 +2,11 @@
 @section('titles')<center>Tambah Warga</center>
 @endsection
 @section('content')
-<div class="col-lg-12">
 	<div class="panel panel-default">
-		<div class="panel-heading"></div>
-	</div>
-	<div class="panel-body">
+		<div class="panel-heading">
+			<center>Tambah Data Warga</center>
+		</div>
+		<div class="panel-body">
 		<form method="POST" action="{{url('warga')}}" enctype="multipart/form-data">
 			@csrf
 			<div class="form-group">
@@ -16,7 +16,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</div>
-						<input placeholder="Nama Lengkap" type="text"  class="form-control" name="nama">
+						<input placeholder="Nama Lengkap" type="text"  class="form-control" name="nama" required>
 					</div>
 				</div>
 				<label class="col-sm-1 control-label">NIK</label>
@@ -25,7 +25,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-deviantart"></i>
 						</div>
-						<input placeholder="NIK" type="number" class="form-control"  name="nik">
+						<input placeholder="NIK" type="number" class="form-control"  name="nik" required>
 					</div>
 				</div>
 				<label class="col-sm-1 control-label">Agama</label>
@@ -34,7 +34,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-deviantart"></i>
 						</div>
-						<input placeholder="Agama" type="text" class="form-control"  name="agama">
+						<input placeholder="Agama" type="text" class="form-control"  name="agama" required>
 					</div>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-deviantart"></i>
 						</div>
-						<input placeholder="Tanggal Lahir" type="text" class="form-control"  name="tgl_lahir" id="ttl_datepicker" autocomplete="off">
+						<input placeholder="Tanggal Lahir" type="text" class="form-control"  name="tgl_lahir" id="ttl_datepicker" autocomplete="off" required>
 					</div>
 				</div>
 				<label class="col-sm-1 control-label">Status</label>
@@ -75,7 +75,7 @@
 						<select name="status" class="form-control select2" style="width:100%;" tabindex="-1" aria-hidden="true" required>
 							<option value="">Status</option>
 							<option value="Menikah">Menikah</option>
-							<option value="Belum Menikah">Jomnloo yaa?! :v</option>
+							<option value="Belum Menikah">Belum Menikah</option>
 						</select>
 					</div>
 				</div>
@@ -116,7 +116,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-deviantart"></i>
 						</div>
-						<input placeholder="Pekerjaan" type="text" class="form-control"  name="pekerjaan">
+						<input placeholder="Pekerjaan" type="text" class="form-control"  name="pekerjaan" required>
 					</div>
 				</div>
 			</div>
@@ -128,7 +128,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</div>
-						<input placeholder="Nama Jalan" type="text"  class="form-control" name="alamatjalan">
+						<input placeholder="Nama Jalan" type="text"  class="form-control" name="alamatjalan" required>
 					</div>
 				</div>
 				<label class="col-sm-1 control-label">RT</label>
@@ -137,7 +137,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-deviantart"></i>
 						</div>
-						<input placeholder="RT" type="number" class="form-control"  name="alamatrt">
+						<input placeholder="RT" type="number" class="form-control"  name="alamatrt" required>
 					</div>
 				</div>
 				<label class="col-sm-1 control-label">RW</label>
@@ -146,7 +146,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-deviantart"></i>
 						</div>
-						<input placeholder="RW" type="number" class="form-control"  name="alamatrw">
+						<input placeholder="RW" type="number" class="form-control"  name="alamatrw" required>
 					</div>
 				</div>
 			</div>
@@ -172,9 +172,6 @@
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</div>
-						<!-- <select name="tempat" class="form-control select2" style="width: 100px;" tabindex="-1" aria-hidden="true" required>
-							<option value=""></option>
-						</select> -->
 							<select name="tempat" class="form-control select2" style="width:100%;" tabindex="-1" aria-hidden="true" required>
 								<option value="">PILIH KOTA</option>
 								@foreach($kotas as $kota)
@@ -206,7 +203,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</div>
-						<input placeholder="Nama Lengkap" type="file"  class="form-control" name="foto_warga">
+						<input placeholder="Nama Lengkap" type="file"  class="form-control" name="foto_warga" required>
 					</div>
 				</div>
 				<label class="col-sm-1 control-label">Foto Tanda Tangan</label>
@@ -215,7 +212,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-deviantart"></i>
 						</div>
-						<input placeholder="NIK" type="file" class="form-control"  name="foto_ttd">
+						<input placeholder="NIK" type="file" class="form-control"  name="foto_ttd" required>
 					</div>
 				</div>
 			</div>
@@ -224,5 +221,5 @@
 			<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus-square"></i> Tambah Data</button>
 		</form>
 	</div>
-</div>
+	</div>
 @endsection

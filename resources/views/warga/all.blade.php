@@ -16,7 +16,7 @@
 						<th>Jenkel</th>
 						<th>Gol_dar</th>
 						<th>Alamatjalan</th>
-						<th colspan="2">Letak</th>
+						<th colspan="2"">Letak</th>
 						<th>Agama</th>
 						<th>Status</th>
 						<th>Pekerjaan</th>
@@ -24,7 +24,9 @@
 						<th>Berlakuhingga</th>
 						<th>Foto_warga</th>
 						<th>Foto_ttd</th>
+						@if(Auth::user()->akses == 'admin')
 						<th>Action</th>
+						@endif
 					</tr>
 				</thead>
 				<tbody>
@@ -39,11 +41,22 @@
 					$subject = $kota;
 					$kotas =  str_replace("Kota ","", $subject); 
 					?>
-					<tr>
-						<td><a href="{{route('warga.showData', $warga->nik)}}">{{ $warga->nik }}</a></td>
+					<tr align="center">
+						<td>
+							@if(Auth::user()->akses == 'admin')
+								<a target="_blank" href="{{url($warga->nik.'/warga/cetak')}}">
+							@endif
+							{{ $warga->nik }}</a>
+						</td>
 						<td>{{ $warga->nama }}</td>
 						<td>{{ str_limit($kotas, 19) }}<br>{{$warga->tgl_lahir}}</td>
-						<td>{{ $warga->jenkel }}</td>
+						<td>
+							@if($warga->jenkel == "L")
+								Laki-Laki
+							@elseif($warga->jenkel == "P")
+								Perempuan
+							@endif
+						</td>
 						<td>{{ $warga->gol_dar }}</td>
 						<td>{{ $warga->alamatjalan }}</td>
 						<td>
@@ -61,8 +74,9 @@
 						<td>{{ $warga->pekerjaan }}</td>
 						<td>{{ $warga->kewarganegaraan }}</td>
 						<td>{{ $warga->berlakuhingga }}</td>
-						<td><img src="{{asset('warga_image/'.$warga->foto_warga)}}" alt="..." class="img-responsive"></td>
+						<td><img src="{{asset('/warga_image/'.$warga->foto_warga)}}" alt="..." class="img-responsive"></td>
 						<td><img src="{{asset('/signature/images/'.$warga->foto_ttd)}}" alt="..." class="img-responsive"></td>
+						@if(Auth::user()->akses == 'admin')
 						<td>
 							<a class="btn btn-info" href="{{url('warga/'.$warga->id.'/edit')}}">edit</a>
 							<form action="{{ route('warga.destroy', $warga->id) }}" method="post">
@@ -71,6 +85,7 @@
 								<input type="submit" value="delete" onclick="return confirm('apus data ?')">
 							</form>
 						</td>
+						@endif
 					</tr>
 					@endforeach
 				</tbody>

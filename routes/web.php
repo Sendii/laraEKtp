@@ -14,9 +14,17 @@
 Route::get('/', function() {
 	return view('welcome');
 });
+
 Route::resource('warga', 'WargaC');
-Route::get('/signatures', 'WargaC@signature');
+Route::get('/signatures', function(){
+	return view('warga.signature');
+}); //ini routing untuk membuat tanda tangan
+
+Route::get('importexport', function() {
+	return view('importexport');
+});
 Route::get('{nik}/warga/cetak', 'WargaC@showWarga')->name('warga.showData');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('chart', 'WargaC@getChart');
